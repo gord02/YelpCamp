@@ -1,0 +1,46 @@
+<%- include("partials/header") %>
+
+
+    <!-- This allows for border around content so it is not at the edge of the tab -->
+    <div class="container">
+    <!-- this container allows for a border to be mainted when the size of tab is manpulated -->
+    <div class="container">
+            <header class="jumbotron">
+            <h1>Welcome to YelpCamp</h1>
+            <p>View our hand picked campgrounds</p>
+            <p>
+                <a class="btn btn-primary btn-large" href="/campgrounds/new"
+                >Add new Campground</a
+                >
+            </p>
+        </div>
+        </header>
+
+        <!-- this creetaes the grid for the campground images  -->
+        <div class="row">
+            <div class="col-lg-12"> 
+                <h3>OUR MOSR popular </h3> 
+            </div>
+        </div>
+    <!-- this style addtition allows all the images to have the same heights when displayed in gird/grid adpats -->
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                <!-- for hevery element in campgrounds array the function camprgound will run -->
+                <% campgrounds.forEach(function(campground){ %>
+        <!-- column-medium-3, this allows for shrinking so that the number of images per row changes depending on size of screen(makes it responsive when adjusting-->
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnail">
+                        <img src="<%=campground.image %>">
+                        <div class="caption">
+                            <h4><%=campground.name%></h4>
+                        </div>
+                            <p>
+                            <!-- id  -->
+                                <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                            </p>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+    </div>
+
+<%- include("partials/footer") %>
